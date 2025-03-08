@@ -18,7 +18,7 @@ export default function AddTopic() {
         }
 
         try {
-            await fetch('http://localhost:3000/api/topics', {
+            const res = await fetch('http://localhost:3000/api/topics', {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
@@ -26,7 +26,11 @@ export default function AddTopic() {
                 body: JSON.stringify({ title, description }),
             });
 
-            router.push('/');
+            if (res.ok) {   
+                router.push('/');
+            } else {
+                console.log("Failed");
+            }
            
         } catch (error) {
             console.log(Error)
