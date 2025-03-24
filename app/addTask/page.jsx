@@ -41,6 +41,14 @@ export default function AddTopic() {
     return (
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <input
+                onChange={(e) => setTopic(e.target.value)}
+                value={topic}
+                className="bg-[#24292F]/40 border border-[#24292F]/50 rounded-xl font-medium px-10 py-3"
+                type="text" 
+                placeholder="Topic" 
+            />
+
+            <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 className="bg-[#24292F]/40 border border-[#24292F]/50 rounded-xl font-medium px-10 py-3"
