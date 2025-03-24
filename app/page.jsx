@@ -1,7 +1,7 @@
-import TopicsList from "@/components/Topics";
+import TasksList from "@/components/Tasks";
 
 export default function Home() {
   return (
-    <TopicsList />
+    <TasksList />
   );
 }

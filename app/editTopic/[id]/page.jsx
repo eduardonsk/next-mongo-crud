@@ -1,13 +1,13 @@
-import EditTopicForm from "@/components/EditTopicForm";
+import EditTopicForm from "@/components/EditTaskForm";
 
-const getTopicById = async (id) => {
+const getTaskById = async (id) => {
     try {
         const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
             cache: 'no-store',
         });
 
         if(!res.ok) {
-            throw new Error("Failed to fetch topic");
+            throw new Error("Failed to fetch task");
         }
 
         return res.json();
@@ -17,11 +17,11 @@ const getTopicById = async (id) => {
 }
 
 
-export default async function EditTopic({ params }) {
+export default async function EditTask({ params }) {
     const { id } = params;
-    const topic = await getTopicById(id);
-    const { title, description } = topic;
+    const task = await getTaskById(id);
+    const { topic, title, description } = task;
     return (
-        <EditTopicForm id={id} title={title} description={description} />
+        <EditTopicForm id={id} topic={topic} title={title} description={description} />
     );
 }

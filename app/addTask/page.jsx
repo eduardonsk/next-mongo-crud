@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AddTopic() {
+    const [topic, setTopic] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
@@ -12,18 +13,18 @@ export default function AddTopic() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if(!title || !description){
-            alert("Title and description are required");
+        if(!topic || !title || !description){
+            alert("Topic, title and description are required");
             return;
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/topics', {
+            const res = await fetch('http://localhost:3000/api/tasks', {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({ title, description }),
+                body: JSON.stringify({ topic, title, description }),
             });
 
             if (res.ok) {   
@@ -42,17 +43,17 @@ export default function AddTopic() {
             <input
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
-                className="border border-slate-500 px-8 py-2"
+                className="bg-[#24292F]/40 border border-[#24292F]/50 rounded-xl font-medium px-10 py-3"
                 type="text" 
-                placeholder="Topic Title" 
+                placeholder="Title" 
             />
 
             <input
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
-                className="border border-slate-500 px-8 py-2"
+                className="bg-[#24292F]/40 border border-[#24292F]/20 rounded-xl font-medium px-10 py-3"
                 type="text" 
-                placeholder="Topic Descriptions"
+                placeholder="Description"
             />
 
             <button type="submit" className="bg-green-600 font-bold text-white py-3 px-6 w-fit">Add Topic</button>

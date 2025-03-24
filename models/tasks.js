@@ -1,7 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
-const topicSchema = new Schema(
+const taskSchema = new Schema(
     {
+        topic: String,
         title: String,
         description: String,
     }, 
@@ -10,6 +11,6 @@ const topicSchema = new Schema(
     }
 );
 
-const Topic = mongoose.models.Topic || mongoose.model("Topic", topicSchema);
+const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);
 
-export default Topic;
+export default Task;
